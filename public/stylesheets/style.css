@@ -10,3 +10,14 @@ a {
 h1 {
   color: 15px;
 }
+
+#myChart{
+  width:400px;
+  height:400px;
+  }
+
+  .chart{
+    position: relative;
+    width:50vw;
+    height: 50vh;
+  }

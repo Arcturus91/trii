@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const axios = require('axios').default;
-/* var request = require('request'); */
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -8,21 +7,32 @@ router.get("/", (req, res, next) => {
 });
 
 
+router.post("/stockData", (req, res, next) => {
 
-router.get("/ftnt", (req, res, next) => {
+  const {stock} = req.body
+  const stockUpper= stock.toUpperCase()
+console.log("yo soy el req body", stockUpper)
+res.redirect(`/stockData/${stockUpper}`)
+
+})
+
+
+
+
+
+//Company overview
+//https://www.alphavantage.co/query?function=OVERVIEW&symbol=${id}&apikey=KDMP5TP4UWMJKYWX
+router.get("/stockData/:id", (req, res, next) => {
+  const {id} = req.params
   
   axios.get(
-    "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=KDMP5TP4UWMJKYWX")
+    `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${id}&apikey=KDMP5TP4UWMJKYWX`)
      .then(data => {
-      let jsonData = data.data;
-      let value = jsonData['Time Series (Daily)']
-      let price = Object.values(value)
+      const stockData = data.data
 
-
-      console.log("ya tengo el array ", price[99]['4. close']
-      )
+      console.log("ya tengo el objeto", stockData["Symbol"])
       
-    res.send("hola")
+    res.render("stocks/stockData",{stockData})
     })
      .catch(err => console.log(err));
 })
