@@ -2,14 +2,7 @@ const ctx = document.getElementById("myChart").getContext("2d");
 let delayed
 let url = window.location.href;
 
-let startPos
-
-
-if(url.indexOf("stockData/")!==-1){
-  startPos = url.indexOf("stockData/") + 10;
-} else if(url.indexOf("cashFlow/")!==-1){
-  startPos = url.indexOf("cashFlow/") + 9
-}
+let startPos = url.indexOf("stockData/") + 10;
 
 
 
