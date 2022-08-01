@@ -1,7 +1,18 @@
 const ctx = document.getElementById("myChart").getContext("2d");
-
+let delayed
 let url = window.location.href;
-let startPos = url.indexOf("stockData/") + 10;
+
+let startPos
+
+
+if(url.indexOf("stockData/")!==-1){
+  startPos = url.indexOf("stockData/") + 10;
+} else if(url.indexOf("cashFlow/")!==-1){
+  startPos = url.indexOf("cashFlow/") + 9
+}
+
+
+
 let ticker = url.slice(startPos).toUpperCase();
 
 //gradient fill
@@ -31,8 +42,8 @@ axios
           label: ticker,
           fill:true,
           backgroundColor: gradient,
-          borderColor:'#fff',
-          pointBackgroundColor:'rgb(189,195,199)',
+          borderColor:'#ffffff',
+          pointBackgroundColor:'#ffffff',
           
         },
       ],
@@ -42,41 +53,70 @@ axios
       type: "line",
       data: data,
       options: {
+        plugins: {
+          legend: {
+              display: true,
+              labels: {
+                  color: 'rgb(255, 255, 255)',
+                  font: {
+                    size: 20
+                }
+              }
+          }
+      },
         radius:2,
         hitRadius:30,
         responsive: true,
+        animation: {
+            onComplete: () => {
+              delayed = true;
+            },
+            delay: (context) => {
+              let delay = 0;
+              if (context.type === 'data' && context.mode === 'default' && !delayed) {
+                delay = context.dataIndex * 5 + context.datasetIndex * 1.5;
+              }
+              return delay;
+            },
+          },
+
+
+
+
         scales: {
           y: {
             ticks: {
               callback: function (value) {
                 return "$" + value;
               },
+              color: 'rgb(255, 255, 255)',
+              font: {
+                size: 15
+            }
+
+
             },
           },
+
+          x: {
+            ticks: {
+              
+              color: 'rgb(255, 255, 255)',
+              font: {
+                size: 15
+            }
+
+
+            },
+          },
+
+
         },
       },
     };
 
     const myChart = new Chart(ctx, config);
 
-    /*    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: date.reverse(),
-            datasets: [{
-                label: ticker,
-                data: priceArray.reverse(),
-                borderWidth: 1,
-                
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    }); */
+ 
   })
   .catch((err) => console.log(err));

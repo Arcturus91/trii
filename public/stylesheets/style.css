@@ -1,6 +1,8 @@
-body {
+.body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: black;
+  color:white
 }
 
 a {
@@ -12,12 +14,74 @@ h1 {
 }
 
 #myChart{
-  width:400px;
-  height:400px;
+  width:600px;
+  height:600px;
+  color:white
   }
 
   .chart{
     position: relative;
-    width:50vw;
-    height: 50vh;
+    width:75vw;
+   
+  }
+
+
+  .navbar{
+  
+    padding: 0px 50px 0px 50px; 
+    
+     
+   }
+   
+   .navbar > a {
+     color:  rgb(0, 255, 116);
+     text-decoration: none;
+     font-size:30px;
+   display:flex;
+   justify-content: space-evenly;
+
+   
+   }
+
+
+
+
+  #signup{
+    
+    font-size: 15px;
+    color:black;
+  }
+
+  
+  #signup label{
+  color:black;
+    
+  }
+
+
+
+
+#signup ::placeholder {
+  color: red;
+  font-weight: bold;
+}
+
+
+
+
+
+  .signupPic{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .financialInfo{
+    font-size: 22px;
+  }
+
+  .education p {
+font-size: 20px;
+margin:20px
+
   }

@@ -1,9 +1,81 @@
-<h1>{{appTitle}} 🚀</h1>
-<p>Trii</p>
+<div
+  class="container d-flex flex-column align-items-center my-4 py-3 tales carousel-inner"
+>
 
-<form method="post" action="/stockData">
+  <form method="post" action="/stockData">
+    <div class="card mb-2" >
+      <div class="card-body p-2">
+        <div class="input-group input-group-lg">
+          <input
+            type="text"
+            name="stock"
+            class="form-control form-control-lg rounded"
+            placeholder="Escribe el ticker"
+            aria-label="Type Keywords"
+            aria-describedby="basic-addon2"
+          />
 
-<input type="text" name="stock" placeholder="Type the stock ticker" />
-<button type="submit" > Search</button>
+          <span class="input-group-text border-0" id="basic-addon2"><i
+              class="fas fa-search"
+            ></i></span>
 
-</form>
+          <button class="btn btn-light btn-lg active " type="submit">Buscar</button>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+<div id="carouselExampleIndicators" class="carousel slide py-5" data-bs-ride="carousel">
+
+
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+
+  </div>
+
+
+  <div class="carousel-inner">
+
+    <div class="carousel-item active">
+<a href="/stockData/AAPL">
+      <img src="images/aapl.png" class="d-block w-100 imgcover" alt="...">
+</a>
+    </div>
+
+    <div class="carousel-item">
+        <a href="/stockData/AMD">
+      <img src="images/amd.png" class="d-block w-100 imgcover" alt="...">
+      </a>
+    </div>
+
+    <div class="carousel-item">
+        <a href="/stockData/FTNT">
+      <img src="images/ftnt.jpeg" class="d-block w-100 imgcover" alt="...">
+      </a>
+    </div>
+
+    <div class="carousel-item">
+        <a href="/stockData/NVDA">
+      <img src="images/nvda.png" class="d-block w-100 imgcover" alt="...">
+      </a>
+    </div>
+
+  </div>
+
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev" >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+</div>
