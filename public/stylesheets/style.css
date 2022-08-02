@@ -85,3 +85,22 @@ font-size: 20px;
 margin:20px
 
   }
+
+  .imgcoverprofile{
+    object-fit: contain;
+    min-width: 300px;
+    max-width: 310px;
+    min-height: 300px;
+    max-height: 310px;
+    
+    }
+
+    .profile > button> a{
+
+      color:  white;
+      text-decoration: none;
+      font-size:30px;
+    display:flex;
+    justify-content: space-evenly;
+ 
+    }

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const axios = require("axios").default;
+const { Router } = require("express");
 const arrayTextToNumber = require("../utils/arrayTextToNumber");
 const customFinancialRatios = require("../utils/customFinancialRatios")
 
@@ -109,6 +110,15 @@ router.get("/education/educationPage", (req, res) => {
 
 router.get("/education/educationList", (req, res) => {
   res.render("education/educationList");
+  
 });
+
+router.get("/education/calculatorsList",(req, res)=>{
+  res.render("education/calculatorsList")
+})
+
+router.get("/education/calculatorsList/peratio",(req, res) => {
+  res.render("education/calculators/peratio")
+})
 
 module.exports = router;

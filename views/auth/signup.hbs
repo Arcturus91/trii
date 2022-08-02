@@ -1,32 +1,29 @@
+<div class="container py-5 my-3">
 
-<div class="container py-5 my-5" >
+  {{#if errorMessage}}
 
-        {{#if errorMessage}}
+    <div class="alert">
 
-        <div class="alert">
-          
-          <a href="/auth/signup">
-          <span
-            class="closebtn"
-            onclick="this.parentElement.style.display='none';"
-          >&times;</span>
-          </a>
-          <strong>Error:</strong>
-          {{errorMessage}}
-        </div>
+      <a href="/auth/signup">
+        <span
+          class="closebtn"
+          onclick="this.parentElement.style.display='none';"
+        >&times;</span>
+      </a>
+      <strong>Error:</strong>
+      {{errorMessage}}
+    </div>
 
-      {{/if}}
+  {{/if}}
 
-  <h4 class="display-4 d-flex justify-content-center my-5">Bienvenido a Trii!</h4>
+  <h4 class="display-4 d-flex justify-content-center my-3">Bienvenido a Trii!</h4>
 
-  <div class="row ">
+  <div class="row">
     <div class="col">
 
-
-
       <form
-       action="/auth/signup"
-        method="POST"
+        action="/auth/signup"
+        method="post"
         enctype="multipart/form-data"
         class="px-md-2"
         id="signup"
@@ -37,27 +34,79 @@
             <div class="row d-flex justify-content-center align-items-center">
               <div class="">
                 <div class="card rounded-5">
-<div class="signupPic">
-                  <img
-                    src="https://res.cloudinary.com/dad5dandd/image/upload/v1659326921/trii/signup_faiqck.png"
-                    class="w-50 "
-                    style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
-                    alt="Sample photo"
-                  />
-</div>
+                  <div class="signupPic">
+                    <img
+                      src="https://res.cloudinary.com/dad5dandd/image/upload/v1659326921/trii/signup_faiqck.png"
+                      class="w-50"
+                      style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                      alt="Sample photo"
+                    />
+                  </div>
                   <div class="card-body p-4 p-md-5">
-                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-4 px-md-2">Registrate</h3>
+                    <h3
+                      class="mb-4 pb-2 pb-md-0 mb-md-4 px-md-2"
+                    >Registrate</h3>
 
-                    <div class="form-outline mb-4">
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
 
-                      <input
-                        type="text"
-                        id="form3Example1q"
-                        class="form-control"
-                        name="username"
-                      />
+                        <div class="form-outline datepicker">
 
-                      <label class="form-label h5">Tu nombre</label>
+                          <input
+                            type="text"
+                            name="lastName"
+                            class="form-control"
+                            
+                          />
+                          <label class="form-label">Apellidos</label>
+                        </div>
+
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+
+                        <input
+                          type="text"
+                          name="firstName"
+                          class="form-control"
+                          
+                        />
+                        <label class="form-label">Nombres</label>
+
+                      </div>
+
+                    </div>
+
+                    <div class="row">
+
+                      <div class="col-md-6 mb-4">
+
+                        <div class="form-outline datepicker">
+
+                          <input
+                            type="text"
+                            id="form3Example1q"
+                            class="form-control"
+                            name="username"
+                          />
+
+                          <label class="form-label">Tu nombre de usuario</label>
+
+                        </div>
+
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+
+                        <input
+                          type="password"
+                          name="password"
+                          class="form-control"
+                          
+                        />
+                        <label class="form-label">Password</label>
+
+                      </div>
 
                     </div>
 
@@ -70,7 +119,7 @@
                             type="number"
                             name="phoneNumber"
                             class="form-control"
-                            id="exampleDatepicker1"
+                            
                           />
                           <label class="form-label">Tu número</label>
                         </div>
@@ -79,18 +128,16 @@
 
                       <div class="col-md-6 mb-4">
 
-                      <input
-                            type="email"
-                            name="phoneNumber"
-                            class="form-control"
-                            id="exampleDatepicker1"
-                          />
-                          <label class="form-label">Tu correo</label>
+                        <input
+                          type="email"
+                          name="email"
+                          class="form-control"
+                          
+                        />
+                        <label class="form-label">Tu correo</label>
 
                       </div>
 
-
-                      
                     </div>
                     <div class="row">
                       <div class="col-md-6 mb-4">
@@ -106,7 +153,7 @@
 
                       <div class="col-md-6 mb-4">
 
-                        <select name="petType" class="form-select">
+                        <select name="investorType" class="form-select">
 
                           <option value="Value">En valor</option>
                           <option value="Growth">En Crecimiento</option>
@@ -116,14 +163,13 @@
 
                     </div>
 
-                    
                     <div class="form-group">
 
                       <input
                         class="form-control"
                         type="file"
                         name="profile_pic"
-                        required
+                        
                       />
                       <label>Profile Pic</label>
 
