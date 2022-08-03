@@ -81,10 +81,19 @@ h1 {
   }
 
   .education p {
-font-size: 20px;
+font-size: 30px;
 margin:20px
 
+
   }
+
+  .education a {
+    font-size: 30px;
+    margin-top:30px;
+    text-decoration:none;
+    
+    
+      }
 
   .imgcoverprofile{
     object-fit: contain;
@@ -104,3 +113,30 @@ margin:20px
     justify-content: space-evenly;
  
     }
+
+    .calculator{
+      margin-top: 50px;
+color:black;
+display:flex;
+justify-content: center;
+    }
+
+    .calculator input{
+      width: 200px;
+    }
+
+    .formcenter{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .calculatordescript{
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+    align-items: center;
+    
+    }
+
+   

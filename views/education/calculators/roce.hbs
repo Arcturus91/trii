@@ -1,0 +1,61 @@
+<div class="calculator">
+  <div class="card text-center">
+    <div class="card-header h4">
+      Calculadora
+    </div>
+    <div class="card-body">
+
+      <div class="calculatordescript mx-4">
+
+      <h5 class="card-title">Ratio Retorno al capital Empleado (Return on capital employed)</h5>
+
+      <p class="card-text ">El ratio Retorno al capital Empleado indica el retorno operativo al capital brindado por los accionistas. Para más info, visita:</p>
+      <a href="/education/articles/rocePage">El artículo Ratio ROCE</a>
+</div>
+        <div class="formcenter">
+
+      <div class="form-row my-3 ">
+
+        <div class="form-group col my-3">
+          <input class="form-control" type="number" name="opInc" id="opIncID" />
+          <label>Operating Income</label>
+        </div>
+
+        <div class=" form-group col my-3">
+          <input class=" form-control" type="number" name="nonCurrLiab" id="nonCurrLiabID" />
+          <label>Pasivos no Corrientes</label>
+        </div>
+
+        <div class=" form-group col my-3">
+          <input class=" form-control" type="number" name="equit" id="equitID" />
+          <label>Patrimonio</label>
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="my-3">
+          <button class="btn btn-primary" type="button" id="calculateID">
+            Calcular</button>
+        </div>
+
+        <div class="my-3 form-group col">
+          <input class="form-control"  name="roce" id="roceID" readonly />
+          <label>Retorno al capital empleado</label>
+        </div>
+
+      </div>
+
+      </div>
+
+
+      <div class="card-footer text-muted">
+        <a href="/education/calculatorsList/" class="btn btn-primary">Regresa a
+          la lista de calculadoras</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="/js/roce.js"></script>

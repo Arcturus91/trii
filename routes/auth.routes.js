@@ -1,8 +1,9 @@
 const router = require("express").Router();
-const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
-const saltRounds = 10;
 const User = require("../models/User.model");
+const mongoose = require("mongoose");
+
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
 const fileUploader = require('../config/cloudinary.config');
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");

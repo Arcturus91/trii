@@ -1,18 +1,56 @@
+<div class="calculator">
+  <div class="card text-center">
+    <div class="card-header h4">
+      Calculadora
+    </div>
+    <div class="card-body">
 
-<div class="container my-5">
-<h1>Calculadora de Ratio Precio/Beneficio (Price to Earnings ratio)</h1>
+      <div class="calculatordescript mx-4">
 
-<form action="" method="post">
-    <input type="text" name="price"/>
-    <label>Price</label>
+      <h5 class="card-title">Ratio Precio/Beneficio (Price to Earnings ratio)</h5>
 
-       <input type="text" name="earnings"/>
-    <label>Earnings</label>
-    <div class=" my-3">
-     <p>PE RATIO:    </p>
-     </div>
-
-
-</form>
-
+      <p class="card-text ">El ratio precio beneficio indica cuántas veces pagas por un 1 dólar de beneficio de la empresa. Para más info, visita:</p>
+      <a href="/education/articles/peratioPage">El artículo Ratio Precio/Beneficio</a>
 </div>
+        <div class="formcenter">
+
+      <div class="form-row my-3 ">
+
+        <div class="form-group col my-3">
+          <input class="form-control" type="number" name="price" id="stockPrice" />
+          <label>Precio por acción</label>
+        </div>
+
+        <div class=" form-group col my-3">
+          <input class=" form-control" type="number" name="eps" id="eps" />
+          <label>Beneficios por acción</label>
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="my-3">
+          <button class="btn btn-primary" type="button" id="calculatePer">
+            Calculate</button>
+        </div>
+
+        <div class="my-3 form-group col">
+          <input class="form-control" type="number" name="per" id="per" readonly />
+          <label>PER RATIO</label>
+        </div>
+
+      </div>
+
+      </div>
+
+
+      <div class="card-footer text-muted">
+        <a href="/education/calculatorsList/" class="btn btn-primary">Regresa a
+          la lista de calculadoras</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="/js/peratio.js"></script>
