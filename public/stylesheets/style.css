@@ -26,6 +26,20 @@ h1 {
   }
 
 
+  #myChart2{
+    width:200px;
+    height:200px;
+    color:white
+    }
+  
+    .chart2{
+      position: relative;
+      width:50vw;
+     
+    }
+
+
+
   .navbar{
   
     padding: 0px 50px 0px 50px; 
@@ -103,6 +117,16 @@ margin:20px
     max-height: 310px;
     
     }
+
+
+    .imgcover{
+      object-fit: contain;
+      min-width: 400px;
+      max-width: 410px;
+      min-height: 400px;
+      max-height: 410px;
+      
+      }
 
     .profile > button> a{
 

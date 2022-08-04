@@ -8,8 +8,12 @@ stock: {
       required: true 
 },
 quantity:{
-    type: String,
+    type: Number,
     required: true 
+},
+price:{
+  type:Number,
+  required:true
 }    
 
 },
@@ -25,4 +29,3 @@ module.exports = Stock;
 
 
 
-Y5CrgLnIxiIJpDdmaG0LizqxaTDhJGGv

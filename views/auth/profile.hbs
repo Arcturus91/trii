@@ -1,29 +1,84 @@
-
 <div class="container profile">
 
-<h1>Hola {{dataUser.firstName}} {{dataUser.lastName}}</h1>
+  <h1>Hola {{user.firstName}} {{user.lastName}}</h1>
 
-<img src="{{dataUser.profile_pic}}" class="imgcoverprofile" alt="userprofile" />
+  <img src="{{user.profile_pic}}" class="imgcoverprofile" alt="userprofile" />
 
-<div class=" my-5">   
-    <h3>Tus acciones</h3>
-<ul>
-    <li>US stocks: 20%</li>
-    <li>Foreign stocks : 20%</li>
-    <li>Treasury bonds: 20%</li>
-    <li>REITS: 20%</li>
-    <li>Commodities: 20%</li>
+  <div class="my-3">
+    <form method="post" action="/auth/profile/{{user._id}}/stocks">
+      <div>
+        <h3>Ingresa las acciones de tu portafolio, cantidad y su precio de
+          compra</h3>
 
-</ul>
+<div class="d-flex justify-content-around align-items-center">
+        <label>Ticker</label>
+        <input type="text" name="stock" class="input-group-text" />
+        <label>Cantidad de acciones</label>
+        <input type="number" name="quantity" class="input-group-text" />
+        <label>Precio de compra</label>
+        <input type="number" name="price" class="input-group-text" />
+      
+      <button class="btn btn-primary">Registrar acciones</button>
+</div>
+
 
 </div>
-<div>
+    </form>
+  </div>
 
-    <img src="https://www.lynalden.com/wp-content/uploads/asset-allocation-timing-model.png" alt="Stocks" />
+<div class="row">
+  
+
+  <div class='my-3 col'>
+    <h3>Las Acciones en tu portafolio</h3>
+
+    <div class="col">
+      {{#each user._stocks}}
+        <div class="row" >
+          <h4>{{this.stock}}</h4>
+          <ul>
+
+            <li>Cantidad: {{this.quantity}}</li>
+            <li>Precio de compra: {{this.price}}</li>
+          </ul>
+        </div>
+      {{/each}}
+    </div>
+
+  </div>
+
+<div class=" my-3 col">
+<h3>La distribución de tu portafolio</h3>
+
+ <div class="chart2">
+    <canvas id="myChart2"></canvas>
+  </div>
+
+
 </div>
 
 
-<button class="btn btn-primary my-5"> 
-<a href="/auth/logout">Cerrar Sesión</a> </button>
+  </div>
+
+
+  <div>
+
+  </div>
+
+  <button class="btn btn-primary my-5">
+    <a href="/auth/logout">Cerrar Sesión</a>
+  </button>
+
+
 
 </div>
+
+
+<script
+  src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"
+></script>
+
+<script src="/js/portfolioGraph.js"></script>
+
+
+<script src="/js/script.js"></script>

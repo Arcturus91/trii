@@ -1,40 +1,50 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
+const Stock = require("../models/Stock.model");
 const mongoose = require("mongoose");
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-const fileUploader = require('../config/cloudinary.config');
+const fileUploader = require("../config/cloudinary.config");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-
 //SIGN UP user
-  //GET SIGNUP
+//GET SIGNUP
 router.get("/signup", isLoggedOut, (req, res) => {
   res.render("auth/signup");
 });
 
-  //POST SIGNUP
-router.post("/signup",  fileUploader.single('profile_pic'), (req, res) => {
-  console.log("entré, wey" , req.body)
+//POST SIGNUP
+router.post("/signup", fileUploader.single("profile_pic"), (req, res) => {
+  console.log("entré, wey", req.body);
 
   let profile_pic;
 
-  if(!req.file){
-      console.log("error creating account con picture")
+  if (!req.file) {
+    console.log("error creating account con picture");
 
-     profile_pic = "https://res.cloudinary.com/dhgfid3ej/image/upload/v1558806705/asdsadsa_iysw1l.jpg"
-  }else{
-      console.log("creating account con picture")
+    profile_pic =
+      "https://res.cloudinary.com/dhgfid3ej/image/upload/v1558806705/asdsadsa_iysw1l.jpg";
+  } else {
+    console.log("creating account con picture");
 
-      profile_pic= req.file.path
-      console.log("creating account con picture", profile_pic)
-
+    profile_pic = req.file.path;
+    console.log("creating account con picture", profile_pic);
   }
 
-  const { username, password,firstName,lastName,phoneNumber,email,sex,investorType,role } = req.body;
-  console.log("yo soy el req body",req.body)
+  const {
+    username,
+    password,
+    firstName,
+    lastName,
+    phoneNumber,
+    email,
+    sex,
+    investorType,
+    role,
+  } = req.body;
+  console.log("yo soy el req body", req.body);
 
   /* if (!username) {
     return res.status(400).render("auth/signup", {
@@ -42,7 +52,7 @@ router.post("/signup",  fileUploader.single('profile_pic'), (req, res) => {
     });
   } */
 
-/*   if (password.length < 8) {
+  /*   if (password.length < 8) {
     return res.status(400).render("auth/signup", {
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
@@ -73,14 +83,14 @@ router.post("/signup",  fileUploader.single('profile_pic'), (req, res) => {
           sex,
           investorType,
           profile_pic,
-          role
+          role,
         });
       })
       .then((user) => {
-        console.log("new user created",user)
+        console.log("new user created", user);
         // Bind the user to the session object
         req.session.user = user;
-        console.log('El req.session: ', req.session);
+        console.log("El req.session: ", req.session);
         res.redirect("/");
       })
       .catch((error) => {
@@ -106,11 +116,9 @@ router.get("/login", isLoggedOut, (req, res) => {
   res.render("auth/login");
 });
 
-
-
 router.post("/login", isLoggedOut, (req, res, next) => {
   const { username, password } = req.body;
-console.log("el req body del login", req.body)
+  console.log("el req body del login", req.body);
 
   if (!username) {
     return res.status(400).render("auth/login", {
@@ -144,8 +152,10 @@ console.log("el req body del login", req.body)
           });
         }
         req.session.user = user;
+        console.log("yo soy req.session logeado", req.session.user);
+        console.log("yo soy el user", user);
         // req.session.user = user._id; // ! better and safer but in this case we saving the entire user object
-        return res.redirect("profile");
+        return res.redirect(`profile/${user._id}`);
       });
     })
 
@@ -159,16 +169,54 @@ console.log("el req body del login", req.body)
 
 //User profile
 
-router.get('/profile',isLoggedIn,(req,res)=>{
-  console.log(req.session.user)
+router.get("/profile/:id", isLoggedIn, (req, res) => {
+  const { id } = req.params;
 
-  const dataUser = req.session.user;
+  console.log("yo soy el id del logeado", id);
 
-  res.render("auth/profile",{dataUser})
+  User.findOne({ id })
+  .populate('_stocks')
+    .then((user) => {
+      console.log("el usuario", user);
+
+      res.render("auth/profile", { user });
+    })
+    .catch((err) => {
+      console.log("error finding the user", err);
+    });
+});
+
+//REGISTER Stocks
+
+router.post("/profile/:id/stocks", isLoggedIn, (req, res) => {
+  const { id } = req.params;
+  const { stock, quantity, price } = req.body;
+  console.log("info stocks: ", id, stock, quantity, price);
+
+  Stock.create({
+    stock,
+    quantity,
+    price,
+  })
+    .then((registeredStock) => {
+      console.log("yo soy la stock en la db", registeredStock);
+
+      User.findByIdAndUpdate(id, { $push: { _stocks: registeredStock._id } })
+      .then(() => {
+User.findById(id)
+.populate('_stocks')
+.then((user)=>{
+res.render("auth/profile", { user })
 })
+     
+    })})
 
+    .catch((error) => {
+      console.log("error creando la stock en la db", error);
+    });
+});
 
-
+//Destroying session
 
 router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
@@ -180,5 +228,16 @@ router.get("/logout", isLoggedIn, (req, res) => {
     res.redirect("/");
   });
 });
+
+router.get("/profile",isLoggedIn, (req, res) => {
+ const id =  req.session.user._id
+  res.redirect(`profile/${id}`)
+})
+
+
+
+
+
+
 
 module.exports = router;
