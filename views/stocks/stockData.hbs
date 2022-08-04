@@ -17,7 +17,9 @@
 
     </div>
 
-    <div>
+    <div class="row">
+
+      <div class="col">
       <h2>Ratios financieros</h2>
       <p>PE ratio:
         {{stockData.PERatio}}
@@ -40,26 +42,34 @@
       <p>52WeekLow: {{stockData.52WeekLow}} </p>
       <p>50DayMovingAverage: {{stockData.50DayMovingAverage}} </p>
       <p>200DayMovingAverage: {{stockData.200DayMovingAverage}} </p>
+</div>
+      <div class="col">
+        {{#if roce.returnCapitalEmploy}}
+          <h2 style="color:red">Ratios financieros personalizados </h2>
 
-{{#if roce.returnCapitalEmploy}}
-
-<h3 style="color:red">Custom financial function </h3>
-<p>Ingreso por operaciones {{roce.operatingIncomeTTM}}</p>
-<p>Pasivos no corrientes {{lastQuarterlyBalanceSheet.totalNonCurrentLiabilities}}</p>
-<p>Patrimonio {{lastQuarterlyBalanceSheet.totalShareholderEquity}}</p>
-
-<b>
-<p> Retorno al capital empleado (TTM): {{roce.returnCapitalEmploy}} -> Dale Click aquí para leer sobre el
-        <a href="/education/articles/rocePage">PE ratio</a></p>
-</b>
-{{/if}}
+          <h4> Retorno al capital empleado</h4>
+          <p>Ingreso por operaciones {{roce.operatingIncomeTTM}}</p>
+          <p>Pasivos no corrientes
+            {{lastQuarterlyBalanceSheet.totalNonCurrentLiabilities}}</p>
+          <p>Patrimonio {{lastQuarterlyBalanceSheet.totalShareholderEquity}}</p>
+          <b>
+            <p>
+              Retorno al capital empleado (TTM):
+              {{roce.returnCapitalEmploy}}
+              -> Dale Click aquí para leer sobre el
+              <a href="/education/articles/rocePage">ROCE</a></p>
+          </b>
+        {{/if}}
+      </div>
 
     </div>
   </div>
 
-  <div class="container my-5 financialInfo row ">
+  <div class="container my-5 financialInfo row">
 
-    <h2>Estados financieros anuales reportados el  {{lastAnnualIncomeStatement.fiscalDateEnding}} </h2>
+    <h2>Estados financieros anuales reportados el
+      {{lastAnnualIncomeStatement.fiscalDateEnding}}
+    </h2>
 
     <div class="col">
       <h2>Estado de ganancias y pérdidas</h2>
@@ -85,36 +95,51 @@
 
     <div class="col">
       <h2>Estado de situación Financiera </h2>
-<p>Total activos corrientes: {{lastAnnualBalanceSheet.totalCurrentAssets}} 
+      <p>Total activos corrientes:
+        {{lastAnnualBalanceSheet.totalCurrentAssets}}
         M de
-        {{lastAnnualBalanceSheet.reportedCurrency}} </p>
-      <p>Total activos: {{lastAnnualBalanceSheet.totalAssets}} 
+        {{lastAnnualBalanceSheet.reportedCurrency}}
+      </p>
+      <p>Total activos:
+        {{lastAnnualBalanceSheet.totalAssets}}
         M de
         {{lastAnnualBalanceSheet.reportedCurrency}}</p>
-      <p>Total pasivos corrientes:{{lastAnnualBalanceSheet.totalCurrentLiabilities}} 
+      <p>Total pasivos corrientes:{{lastAnnualBalanceSheet.totalCurrentLiabilities}}
         M de
-        {{lastAnnualBalanceSheet.reportedCurrency}} </p>
-      <p>Total pasivos: {{lastAnnualBalanceSheet.totalLiabilities}} 
+        {{lastAnnualBalanceSheet.reportedCurrency}}
+      </p>
+      <p>Total pasivos:
+        {{lastAnnualBalanceSheet.totalLiabilities}}
         M de
-        {{lastAnnualBalanceSheet.reportedCurrency}} </p>
-      <p>Total Patrimonio: {{lastAnnualBalanceSheet.totalShareholderEquity}} 
+        {{lastAnnualBalanceSheet.reportedCurrency}}
+      </p>
+      <p>Total Patrimonio:
+        {{lastAnnualBalanceSheet.totalShareholderEquity}}
         M de
-        {{lastAnnualBalanceSheet.reportedCurrency}} </p>
-      
-      
+        {{lastAnnualBalanceSheet.reportedCurrency}}
+      </p>
 
     </div>
 
     <div class="col">
       <h2>Estado de flujos de efectivo</h2>
 
-      <p>Cash de operaciones: {{lastAnnualCashFlow.operatingCashflow}} M de
+      <p>Cash de operaciones:
+        {{lastAnnualCashFlow.operatingCashflow}}
+        M de
         {{lastAnnualIncomeStatement.reportedCurrency}}</p>
-      <p>Cash de inversiones: {{lastAnnualCashFlow.cashflowFromInvestment}} M de
-        {{lastAnnualIncomeStatement.reportedCurrency}} </p>
-      <p>Cash de financiamiento: {{lastAnnualCashFlow.cashflowFromFinancing}} M de
+      <p>Cash de inversiones:
+        {{lastAnnualCashFlow.cashflowFromInvestment}}
+        M de
+        {{lastAnnualIncomeStatement.reportedCurrency}}
+      </p>
+      <p>Cash de financiamiento:
+        {{lastAnnualCashFlow.cashflowFromFinancing}}
+        M de
         {{lastAnnualIncomeStatement.reportedCurrency}}</p>
-      <p>Cambio neto en el efectivo y efectivo equivalente: {{lastAnnualCashFlow.changeInCashAndCashEquivalents}} M de
+      <p>Cambio neto en el efectivo y efectivo equivalente:
+        {{lastAnnualCashFlow.changeInCashAndCashEquivalents}}
+        M de
         {{lastAnnualIncomeStatement.reportedCurrency}}</p>
 
     </div>
@@ -169,5 +194,3 @@ ENDPOINTS:
 "<p>50DayMovingAverage: {{stockData.50DayMovingAverage}} </p>",
 "<p>200DayMovingAverage: {{stockData.200DayMovingAverage}} </p>",
  --}}
-
- 

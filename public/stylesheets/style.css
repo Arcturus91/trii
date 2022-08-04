@@ -94,6 +94,11 @@ h1 {
     font-size: 22px;
   }
 
+  .financialInfo h2{
+    margin-top: 20px;
+    margin-bottom:20px
+  }
+
   .education p {
 font-size: 30px;
 margin:20px
