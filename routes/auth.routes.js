@@ -3,6 +3,10 @@ const User = require("../models/User.model");
 const Stock = require("../models/Stock.model");
 const mongoose = require("mongoose");
 
+const {getStocksById} = require("../controllers/stocks.controller")
+
+
+
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const fileUploader = require("../config/cloudinary.config");
@@ -46,17 +50,17 @@ router.post("/signup", fileUploader.single("profile_pic"), (req, res) => {
   } = req.body;
   console.log("yo soy el req body", req.body);
 
-  /* if (!username) {
+ if (!username) {
     return res.status(400).render("auth/signup", {
       errorMessage: "Please provide your username.",
     });
-  } */
+  } 
 
-  /*   if (password.length < 8) {
+     if (password.length < 8) {
     return res.status(400).render("auth/signup", {
       errorMessage: "Your password needs to be at least 8 characters long.",
     });
-  } */
+  } 
 
   // Search the database for a user with the username submitted in the form
   User.findOne({ username }).then((found) => {
@@ -216,6 +220,18 @@ res.render("auth/profile", { user })
     });
 });
 
+router.get("/profile",isLoggedIn, (req, res) => {
+  const id =  req.session.user._id
+   res.redirect(`profile/${id}`)
+ })
+
+
+//Stocks: 
+
+router.get("/profile/:id/stocks",getStocksById)
+
+
+
 //Destroying session
 
 router.get("/logout", isLoggedIn, (req, res) => {
@@ -229,10 +245,7 @@ router.get("/logout", isLoggedIn, (req, res) => {
   });
 });
 
-router.get("/profile",isLoggedIn, (req, res) => {
- const id =  req.session.user._id
-  res.redirect(`profile/${id}`)
-})
+
 
 
 
