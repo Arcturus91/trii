@@ -1,0 +1,59 @@
+<div class="container py-5 my-3 d-flex align-items-center flex-column">
+
+  <h1>Hola, Crack!</h1>
+  <h3>Bienvenido al portal de creación de contenido</h3>
+
+<section class="createPage">
+  <form
+    action="/education/pageCreated"
+    method="post"
+    enctype="multipart/form-data"
+    class="px-md-2"
+    id="createPage"
+  >
+
+<div class="my-3 py-3 ">
+
+    <div class="d-flex flex-column align-items-center">
+        <label>Ingresa el título de tu artículo</label>
+        <input
+        type="text"
+        name="title"
+      />
+      </div>
+    <div class="d-flex flex-column align-items-center">
+        <label>Explica qué es el ratio del que vas a hablar</label>
+        <input
+        type="text"
+        name="firstPara"
+      />
+      </div>
+    <div class="d-flex flex-column align-items-center">
+        <label>Explica la cómo se calcula</label><input
+        type="text"
+        name="secondPara"
+      /></div>
+   
+
+    <div class="d-flex flex-column align-items-center">
+      <label>Muestra un ejemplo práctico</label>
+      <input
+        type="text"
+        name="example"
+      />
+    </div>
+
+
+     <div class="d-flex flex-column align-items-center ">
+        <label>Agrega una imagen de la fórmula</label>
+        <input style="width: 120px;font-size: 15px; height:30px; padding-right:10px; padding-left:10px"  type="file" name="paraPic" />
+        </div>
+
+    </div>
+
+<div class="d-flex flex-column align-items-center ">
+    <button type="submit" class="btn btn-success btn-lg my-4">Ingresar</button>
+    </div>
+  </form>
+  </section>
+</div>

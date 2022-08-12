@@ -1,16 +1,50 @@
-<form action="/auth/login" method="POST">
+<div class="container py-5 my-3 d-flex justify-content-center">
 
+  {{#if errorMessage}}
 
-   <label> Username
-      <input type="text" name="username">
-   </label>
-   <label> Password
-      <input type="password" name="password">
-   </label>
+    <div class="alert">
 
-   <button type="submit">Submit</button>
-</form>
+      <a href="/auth/login">
+        <span
+          class="closebtn"
+          onclick="this.parentElement.style.display='none';"
+        >&times;</span>
+      </a>
+      <strong>Error:</strong>
+      {{errorMessage}}
+    </div>
 
-{{#if errorMessage}}
-   {{errorMessage}}
-{{/if}}
+  {{/if}}
+
+  <div class="row py-3" style="width:600px ;">
+    <h4 class="display-4 d-flex justify-content-center my-3">Bienvenido a Trii!</h4>
+
+    <form action="/auth/login" method="POST">
+
+      <div class="form-group py-3">
+        <label for="exampleInputEmail1">Username</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Ingresa tu usuario"
+          name="username"
+        />
+      </div>
+      <div class="form-group py-3">
+        <label for="exampleInputPassword1">Contraseña</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Contraseña"
+          name="password"
+        />
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Ingresa</button>
+
+    </form>
+  </div>
+</div>

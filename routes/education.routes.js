@@ -36,6 +36,16 @@ router.get("/articles/peratioPage", (req, res) => {
     res.render("education/calculators/roce")
   })
 
+  //Create page:
+
+  router.get("/formCreate",(req, res) =>{
+    res.render("education/createPage")
+  })
+
+  router.post("/pageCreated",(req, res)=>{
+    res.send("Gracias por crear un post. Te avisaremos cuando este aprobado.")
+  })
+
 
 
 

@@ -168,4 +168,28 @@ justify-content: center;
     
     }
 
+
+    .createPage{
+      background-color: white;
+      
+width: 1000px;
+    border-radius: 20px;
+    }
+
+    .createPage >h1,h2,label{
+      color:black;
+    }
+
+    .createPage input{
+      width: 800px;
+      height: 200px;
+    }
+    .createPage label{
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+
+
+
    
