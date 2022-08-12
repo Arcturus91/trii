@@ -66,7 +66,7 @@ const pullStocks = () => {
         
 
           portfolio[element] = stockValue[idx] / sumPortfolio;
-          console.log("el portfolio ", portfolio)
+          //console.log("el portfolio ", portfolio)
           axios
           .get(
             `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${element}&apikey=KDMP5TP4UWMJKYWX`
@@ -81,16 +81,16 @@ const pullStocks = () => {
 //aqui se podría agregar lo del error por si hay error en beta.
 
                 betaPort += portfolio[key] * stocksBeta[key];
-                console.log("yo soy beta port", betaPort)
+                //console.log("yo soy beta port", betaPort)
               }
               betaHtml.value = 'El Beta de tu portfolio es: '+ betaPort.toFixed(2)
 
-console.log("el tipo de betaport", typeof betaPort)
+//console.log("el tipo de betaport", typeof betaPort)
 
 if(betaPort > 0){betaHtml.type = "text"}
               
 
-              console.log("json data del beta get", stocksBeta, betaPort);
+              //console.log("json data del beta get", stocksBeta, betaPort);
             }
           });
 

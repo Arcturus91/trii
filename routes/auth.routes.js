@@ -174,11 +174,12 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 //User profile
 
 router.get("/profile/:id", isLoggedIn, (req, res) => {
-  const { id } = req.params;
+  const {id}= req.params;
+
 
   console.log("yo soy el id del logeado", id);
 
-  User.findOne({ id })
+  User.findById( id )
   .populate('_stocks')
     .then((user) => {
       console.log("el usuario", user);

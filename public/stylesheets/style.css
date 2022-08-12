@@ -176,19 +176,29 @@ width: 1000px;
     border-radius: 20px;
     }
 
-    .createPage >h1,h2,label{
+    .createPage >h1 h2{
       color:black;
+    }
+
+
+    .createPage label{
+      color:black;
+      font-size: 20px;
+      margin-top: 20px;
     }
 
     .createPage input{
       width: 800px;
       height: 200px;
     }
-    .createPage label{
-      font-size: 20px;
-      margin-top: 20px;
-    }
 
+.portfolio input {
+width:400px;
+text-align: center;
+}
+
+/* when you dont use the > you attack the whole tags in the container.
+when u use > , u only attack the children */
 
 
 
